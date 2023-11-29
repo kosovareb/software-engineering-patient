@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  patientDb:
+    image: postgres:13
+    ports:
+      - 127.0.0.1:5432:5432
+    volumes:
+      - ./postgres/init/:/docker-entrypoint-initdb.d/
+    environment:
+      POSTGRES_DB: kosovare
+      POSTGRES_USER: kosovare
+      POSTGRES_PASSWORD: kosovare
+      PGDATA: /var/lib/postgresql/data/cacttus
+    networks:
+      - backend
+
+networks:
+  backend:
+volumes:
+  my-db:
